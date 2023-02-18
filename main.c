@@ -49,19 +49,23 @@ int main(int argc, char* argv[]) {
                         getline(&input, &input_size, stdin);
 
                         if (strcmp(input, "create\n") == 0) {
-                                printf("Name: ");
-                                strncpy(todo[cur_todo].name, get_input(), MAX_TODO_STRING_SIZE);
+                            	if (cur_todo >= MAX_TODO_STRING_SIZE - 1) {
+					printf(" ctd: You can create only 1024 todos");
+                            	} else {
+                                        printf("Name: ");
+                                        strncpy(todo[cur_todo].name, get_input(), MAX_TODO_STRING_SIZE);
 
-                                printf("Is Completed? (Y/n): ");
-                                if (strcmp(input, "Y\n") == 0 || strcmp(get_input(), "y\n") == 0) {
-                                        strncpy(todo[cur_todo].is_completed, "X", MAX_ISCOMPLETE_STRING_SIZE);
-                                } else {
-                                        strncpy(todo[cur_todo].is_completed, " ", MAX_ISCOMPLETE_STRING_SIZE);
-                                }
+                                        printf("Is Completed? (Y/n): ");
+                                        if (strcmp(input, "Y\n") == 0 || strcmp(get_input(), "y\n") == 0) {
+                                                strncpy(todo[cur_todo].is_completed, "X", MAX_ISCOMPLETE_STRING_SIZE);
+                                        } else {
+                                                strncpy(todo[cur_todo].is_completed, " ", MAX_ISCOMPLETE_STRING_SIZE);
+                                        }
 
-				printf("Text: ");
-                                strncpy(todo[cur_todo].text, get_input(), MAX_TODO_STRING_SIZE);
-                                cur_todo++;
+                                        printf("Text: ");
+                                        strncpy(todo[cur_todo].text, get_input(), MAX_TODO_STRING_SIZE);
+        				cur_todo++;
+				}
                         } else if (strcmp(input, "list\n") == 0) {
                         	if (cur_todo == 0) {
                                 	printf("------------------\n");
