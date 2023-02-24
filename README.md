@@ -1,7 +1,7 @@
 # ctd
 The simplest todo manager in C
 
-## Comiple
+## Compile
 ```bash
 clang -Wall -Werror -pedantic -o ctd main.c
 ```
